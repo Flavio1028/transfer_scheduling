@@ -10,7 +10,9 @@ public enum ErrorMessageEnum {
     INTERNAL_ERROR("Erro interno."),
     ERROR_VALIDATING_DATA("Erro ao validar os dados."),
     USER_NOT_FOUND("Usuário não encontrado."),
-    DOCUMENT_ALREADY_REGISTERED("Documento já cadastrado");
+    DOCUMENT_ALREADY_REGISTERED("Documento já cadastrado"),
+    SOURCE_ACCOUNT_NOT_FOUND("Conta de origem não localizada."),
+    DESTINATION_COUNT_NOT_FOUND("Conta de destino não localizada.");
 
     private final String message;
 
