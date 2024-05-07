@@ -1,5 +1,6 @@
 package br.com.codeup.transfer.service.impl;
 
+import br.com.codeup.transfer.controller.model.ExtractDTO;
 import br.com.codeup.transfer.controller.model.ScheduleDTO;
 import br.com.codeup.transfer.controller.model.SuccessDTO;
 import br.com.codeup.transfer.data.entity.Account;
@@ -12,6 +13,8 @@ import br.com.codeup.transfer.util.exception.ValidationErrorException;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -56,6 +59,24 @@ public class SchedulingServiceImpl implements SchedulingService {
         this.schedulingRepository.save(scheduling);
 
         return SuccessDTO.builder().message("Agendamento realizado com sucesso.").build();
+    }
+
+    @Override
+    public Page<ExtractDTO> retrieveExtract(String account, Pageable page) {
+
+        Page<Scheduling> accounts = this.schedulingRepository.findBYOriginAccount(account, page);
+
+        return accounts.map(value -> ExtractDTO.builder()
+                .customerName(value.getOriginAccount().getUser().getName())
+                .originAccount(value.getOriginAccount().getAccountNumber())
+                .transferValue(value.getTransferValue())
+                .tax(value.getTax())
+                .dataTransfer(value.getDataTransfer())
+                .schedulingDate(value.getSchedulingDate())
+                .beneficiaryName(value.getDestinationAccount().getUser().getName())
+                .beneficiaryAccount(value.getOriginAccount().getAccountNumber())
+                .build());
+
     }
 
     private Account getUserById(String accountNumber, ErrorMessageEnum errorMessage) {
