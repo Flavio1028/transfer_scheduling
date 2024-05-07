@@ -1,6 +1,8 @@
 package br.com.codeup.transfer.controller.model;
 
+import br.com.codeup.transfer.util.format.LocalDateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -14,6 +16,7 @@ public class ErrorDTO {
 
     private String message;
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime data;
 
     private List<String> details;

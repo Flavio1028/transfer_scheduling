@@ -1,6 +1,6 @@
 package br.com.codeup.transfer.controller.model;
 
-import br.com.codeup.transfer.util.LocalDateTimeDeserializer;
+import br.com.codeup.transfer.util.format.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
