@@ -45,7 +45,7 @@ public class Scheduling {
 
     @PrePersist
     private void prePersist() {
-        this.schedulingDate = LocalDateTime.now();
+        this.dataTransfer = LocalDateTime.now();
         this.processed = Boolean.FALSE;
     }
 

@@ -49,12 +49,12 @@ public class SchedulingServiceImpl implements SchedulingService {
         Account destinationAccount = this.getUserById(request.getDestinationAccount(), ErrorMessageEnum.DESTINATION_COUNT_NOT_FOUND);
 
         // Valida a data de trasferencia
-        this.validateDataTransfer(request.getDataTransfer());
+        this.validateDataTransfer(request.getSchedulingDate());
 
         Scheduling scheduling = this.modelMapper.map(request, Scheduling.class);
         scheduling.setOriginAccount(originAccount);
         scheduling.setDestinationAccount(destinationAccount);
-        scheduling.setTax(this.calculateRate(request.getDataTransfer(), request.getTransferValue()));
+        scheduling.setTax(this.calculateRate(request.getSchedulingDate(), request.getTransferValue()));
 
         this.schedulingRepository.save(scheduling);
 

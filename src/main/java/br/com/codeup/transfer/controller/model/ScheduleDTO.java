@@ -26,7 +26,7 @@ public class ScheduleDTO {
 
     @NotNull(message = "deve ser informado.")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime dataTransfer;
+    private LocalDateTime schedulingDate;
 
     @NotNull(message = "deve ser informado.")
     @Min(value = 1, message = "deve ser maio que zero.")
