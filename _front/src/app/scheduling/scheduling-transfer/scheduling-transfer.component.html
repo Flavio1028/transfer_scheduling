@@ -1,0 +1,52 @@
+<mat-card>
+  <mat-toolbar color="primary"> Agendar </mat-toolbar>
+
+  <mat-card-content>
+  <form [formGroup]="form" class="min-width">
+
+    <mat-form-field class="full-width">
+      <mat-label>Conta origem</mat-label>
+      <mat-select formControlName="originAccount" >
+        @for (account of accounts; track account) {
+          <mat-option [value]="account.accountNumber">{{account.accountNumber}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Conta destino</mat-label>
+      <mat-select formControlName="destinationAccount" >
+        @for (account of accounts; track account) {
+          <mat-option [value]="account.accountNumber">{{account.accountNumber}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Data agendamento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="schedulingDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Valor</mat-label>
+      <input matInput type="number" placeholder="0" formControlName="transferValue" >
+    </mat-form-field>
+
+  </form>
+
+  <!--BOTOES -->
+  <mat-card-actions class="actions-center">
+
+  </mat-card-actions>
+  <button  mat-raised-button  color="primary" (click)="onBack()" style="margin: 1em;">
+    Voltar
+  </button>
+  <button mat-raised-button color="accent" (click)="onSubmit()">
+    Agendar
+  </button>
+  </mat-card-content>
+</mat-card>
