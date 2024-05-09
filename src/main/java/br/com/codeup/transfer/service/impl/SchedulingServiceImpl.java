@@ -10,7 +10,6 @@ import br.com.codeup.transfer.data.repository.SchedulingRepository;
 import br.com.codeup.transfer.service.SchedulingService;
 import br.com.codeup.transfer.util.enums.ErrorMessageEnum;
 import br.com.codeup.transfer.util.exception.ValidationErrorException;
-import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

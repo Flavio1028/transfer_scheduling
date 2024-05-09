@@ -2,13 +2,13 @@ package br.com.codeup.transfer.util.exception;
 
 import br.com.codeup.transfer.controller.model.ErrorDTO;
 import br.com.codeup.transfer.util.enums.ErrorMessageEnum;
-import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -3,9 +3,10 @@ package br.com.codeup.transfer.service;
 import br.com.codeup.transfer.controller.model.SuccessDTO;
 import br.com.codeup.transfer.controller.model.UserDTO;
 import br.com.codeup.transfer.controller.model.UserSaveDTO;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import javax.validation.Valid;
 
 public interface UserService {
 

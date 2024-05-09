@@ -1,15 +1,14 @@
 package br.com.codeup.transfer.service.impl;
 
-import br.com.codeup.transfer.data.entity.User;
 import br.com.codeup.transfer.controller.model.SuccessDTO;
 import br.com.codeup.transfer.controller.model.UserDTO;
 import br.com.codeup.transfer.controller.model.UserSaveDTO;
+import br.com.codeup.transfer.data.entity.User;
 import br.com.codeup.transfer.data.repository.UserRepository;
 import br.com.codeup.transfer.service.AccountService;
 import br.com.codeup.transfer.service.UserService;
 import br.com.codeup.transfer.util.enums.ErrorMessageEnum;
 import br.com.codeup.transfer.util.exception.ValidationErrorException;
-import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Service

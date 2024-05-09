@@ -1,10 +1,10 @@
 package br.com.codeup.transfer.data.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.*;
 import java.util.Set;
 
 @Getter
