@@ -2,15 +2,32 @@
   <mat-toolbar color="primary"> Operações disponiveis </mat-toolbar>
 
   <div style="display: flex;">
-    <button mat-flat-button  color="accent" class="button" (click)="onClickScheduling()">
-      <mat-icon>schedule</mat-icon>
-      Agendar Transferência
-    </button>
 
-    <button mat-flat-button color="accent" class="button" (click)="onClickExtract()">
-      <mat-icon>my_library_books</mat-icon>
-      Consultar extrato
-    </button>
+
+    <mat-card (click)="onClickScheduling()" class="mat-card-ajust">
+      <mat-card-header class="mat-card-text-ajust">
+        <mat-card-title>
+          <mat-icon>schedule</mat-icon>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="mat-card-text-ajust">
+        <p>Agendar Transferência</p>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card (click)="onClickExtract()" class="mat-card-ajust">
+      <mat-card-header class="mat-card-text-ajust">
+        <mat-card-title>
+          <mat-icon>my_library_books</mat-icon>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="mat-card-text-ajust">
+        <p>Consultar extrato</p>
+      </mat-card-actions>
+    </mat-card>
+
   </div>
 
 </mat-card>

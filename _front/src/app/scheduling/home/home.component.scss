@@ -7,3 +7,18 @@
 .button_label {
     margin-top: 0.5em;
 }
+
+.mat-card-ajust {
+  width: 40%;
+}
+
+.mat-card-ajust:hover {
+  background-color: hwb(0 91% 8% / 0.973);
+  cursor: pointer;
+
+}
+
+.mat-card-text-ajust {
+  margin: auto;
+  font-size: 1.5em;
+}
