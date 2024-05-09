@@ -51,12 +51,7 @@ export class SchedulingTransferComponent implements OnInit {
 
     ngOnInit(): void {
       this.dateAdapter.setLocale('pt');
-      this.form = this.formBuilder.group({
-      originAccount: ['', Validators.required],
-      destinationAccount: ['', Validators.required],
-      schedulingDate: [new Date(), Validators.required],
-      transferValue: ['', Validators.required]
-    });
+      this.loadForm();
 
     // Carega dados das contas
     this.service.getAllAccont().subscribe(
@@ -77,12 +72,7 @@ export class SchedulingTransferComponent implements OnInit {
       this.service.save(this.form.value).subscribe(
         (__) => {
           this._snackBar.open(`Agendamento realizado com sucesso.`, 'Ok', { duration: 5000 });
-          this.form = this.formBuilder.group({
-            originAccount: [],
-            destinationAccount: [],
-            dataTransfer: [],
-            transferValue: []
-          });
+          this.loadForm();
           this.spinner.hide();
         },
         (value: any) => {
@@ -94,6 +84,16 @@ export class SchedulingTransferComponent implements OnInit {
     } else {
       this.formUtils.validateAllFormFields(this.form);
     }
+  }
+
+
+  loadForm() {
+    this.form = this.formBuilder.group({
+      originAccount: ['', Validators.required],
+      destinationAccount: ['', Validators.required],
+      schedulingDate: [new Date(), Validators.required],
+      transferValue: ['', Validators.required]
+    });
   }
 
   formatDate(schedulingDate: any) {
