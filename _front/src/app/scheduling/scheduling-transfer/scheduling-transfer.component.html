@@ -11,6 +11,11 @@
           <mat-option [value]="account.accountNumber">{{account.accountNumber}}</mat-option>
         }
       </mat-select>
+      @if (form.get('originAccount')?.invalid) {
+        <mat-error>{{
+          formUtils.getErrorMessage(form, "originAccount")
+        }}</mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -20,20 +25,28 @@
           <mat-option [value]="account.accountNumber">{{account.accountNumber}}</mat-option>
         }
       </mat-select>
+      @if (form.get('destinationAccount')?.invalid) {
+        <mat-error>{{
+          formUtils.getErrorMessage(form, "destinationAccount")
+        }}</mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>Data agendamento</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="schedulingDate">
-      <mat-datepicker-toggle matIconSuffix [for]="picker">
-        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-      </mat-datepicker-toggle>
+      <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myFilter" formControlName="schedulingDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"> </mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>Valor</mat-label>
       <input matInput type="number" placeholder="0" formControlName="transferValue" >
+      @if (form.get('transferValue')?.invalid) {
+        <mat-error>{{
+          formUtils.getErrorMessage(form, "transferValue")
+        }}</mat-error>
+      }
     </mat-form-field>
 
   </form>

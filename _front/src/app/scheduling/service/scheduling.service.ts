@@ -19,8 +19,13 @@ export class SchedulingService {
     return this.httpClient.get<any[]>(`${this.API}/account`).pipe(first());
   }
 
-  getExtract(account: string) {
-    return this.httpClient.get<any[]>(`${this.API}/scheduling/${account}`).pipe(first());
+  getExtract(account: string, page: number, size: number) {
+    return this.httpClient.get<any[]>(`${this.API}/scheduling/${account}`, {
+      params: {
+        page: page,
+        size: size
+      }
+    }).pipe(first());
   }
 
 }

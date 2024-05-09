@@ -1,5 +1,5 @@
 import { Component, LOCALE_ID, OnInit } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { DateAdapter, provideNativeDateAdapter } from '@angular/material/core';
@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Error } from '../model/Error';
+import { FormUtilsService } from '../service/FormUtilsService';
 import { SchedulingService } from '../service/scheduling.service';
+
 
 @Component({
   selector: 'app-scheduling-transfer',
@@ -32,21 +34,28 @@ export class SchedulingTransferComponent implements OnInit {
 
   accounts: any[] = [];
 
+  myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date());
+    let date = new Date();
+    return day >= new Date(date.setDate(date.getDate() - 1));
+  };
+
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private router: Router,
     private dateAdapter: DateAdapter<Date>,
     private service: SchedulingService,
     private _snackBar: MatSnackBar,
-    private spinner: NgxSpinnerService) {}
+    private spinner: NgxSpinnerService,
+    public formUtils: FormUtilsService) {}
 
     ngOnInit(): void {
       this.dateAdapter.setLocale('pt');
       this.form = this.formBuilder.group({
-      originAccount: [],
-      destinationAccount: [],
-      schedulingDate: [],
-      transferValue: []
+      originAccount: ['', Validators.required],
+      destinationAccount: ['', Validators.required],
+      schedulingDate: [new Date(), Validators.required],
+      transferValue: ['', Validators.required]
     });
 
     // Carega dados das contas
@@ -82,6 +91,8 @@ export class SchedulingTransferComponent implements OnInit {
           this._snackBar.open(`${error.message}, todos os campos devem ser preenchidos.`, 'Ok', { duration: 5000 });
         }
       );
+    } else {
+      this.formUtils.validateAllFormFields(this.form);
     }
   }
 
@@ -105,6 +116,5 @@ export class SchedulingTransferComponent implements OnInit {
   onBack() {
     this.router.navigate(['home']);
   }
-
 
 }

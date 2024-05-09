@@ -53,6 +53,12 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
+      <mat-paginator [length]="totalElements"
+              [pageSize]="pageSize"
+              (page)="getExtracts($event)">
+      </mat-paginator>
+
     </div>
 
     <div *ngIf="showMessageAlert()">
