@@ -6,8 +6,8 @@ agendadas.
 ### Tecnologias usadas
 
 #### Backend
-- Java 17
-- Spring Boot 3.2.4
+- Java 11
+- Spring Boot 2.7.18
 - JPA
 - Hibernate
 - H2
