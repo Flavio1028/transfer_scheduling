@@ -1,6 +1,6 @@
 ## Agendamento de transferência
 
-Aplicação que realiza u agendamento de transferência bancária entre contas, e depois exibe um extrato das operações 
+Aplicação que realiza um agendamento de transferência bancária entre contas, e depois exibe um extrato das operações 
 agendadas.
 
 ### Tecnologias usadas
