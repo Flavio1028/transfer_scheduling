@@ -20,7 +20,7 @@ export class HomeComponent {
   constructor(private router: Router) { }
 
   onClickScheduling() {
-    this.router.navigate(['transfer']);
+    this.router.navigate(['schedule']);
   }
 
   onClickExtract() {

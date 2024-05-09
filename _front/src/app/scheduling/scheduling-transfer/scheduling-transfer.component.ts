@@ -78,7 +78,7 @@ export class SchedulingTransferComponent implements OnInit {
         (value: any) => {
           this.spinner.hide();
           let error: Error = value.error;
-          this._snackBar.open(`${error.message}, todos os campos devem ser preenchidos.`, 'Ok', { duration: 5000 });
+          this._snackBar.open(`${error.details}`, 'Ok', { duration: 5000 });
         }
       );
     } else {

@@ -7,6 +7,6 @@ import { SchedulingTransferComponent } from './scheduling-transfer/scheduling-tr
 
 export const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'transfer', component: SchedulingTransferComponent },
+  { path: 'schedule', component: SchedulingTransferComponent },
   { path: 'extract', component: ExtractComponent }
 ];
