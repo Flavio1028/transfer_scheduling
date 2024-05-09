@@ -13,7 +13,11 @@ public class BigDecimalSerializer extends JsonSerializer<BigDecimal> {
 
     @Override
     public void serialize(BigDecimal value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        DecimalFormat df = new DecimalFormat("#,###.00");
-        jsonGenerator.writeString(df.format(value));
+        if (value.intValue() != 0) {
+            DecimalFormat df = new DecimalFormat("#,###.00");
+            jsonGenerator.writeString(df.format(value));
+            return;
+        }
+        jsonGenerator.writeString("0,00");
     }
 }
